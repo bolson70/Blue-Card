@@ -5,4 +5,10 @@
 - [x] Find projects related to mine to use
 - [x] Commit changes to README.md file
 - [x] Update projectroadmap.md file
-- [ ] Start working on code for program
+- [x] Start working on code for program
+
+## Sprint 2 
+- [x] Cross reference the related projects for inspiration
+- [x] Continue working on code 
+- [ ] Commit beginning code 
+- [ ] Import dictionary words for common passwords
