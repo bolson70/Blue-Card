@@ -10,5 +10,5 @@
 ## Sprint 2 
 - [x] Cross reference the related projects for inspiration
 - [x] Continue working on code 
-- [ ] Commit beginning code 
-- [ ] Import dictionary words for common passwords
+- [x] Commit beginning code 
+- [x] Import dictionary words for common passwords
