@@ -8,6 +8,7 @@ min_upper = 3
 min_number = 2
 min_special = 2
 
+#function to check password from user input
 def check_password():
     usr_input = input("\nMake sure to not use something predictable like a birthday or name. Also, you shouldn't reuse passwords between accounts.\nPlease enter a password to test strength: ")
     special_characters = "~`!@#$%^&*()_-+={[}]|:;'<,>.?/"
@@ -18,7 +19,7 @@ def check_password():
     number = 0
 
     GITHUB_RAW_URL = 'https://raw.githubusercontent.com/ksu-is/password-strength-checker/refs/heads/main/10-million-password-list-top-1000000.txt'
-
+#lets users use the text file to check for common passwords 
     try:
         response = requests.get(GITHUB_RAW_URL)
         response.raise_for_status()  
@@ -27,7 +28,7 @@ def check_password():
         print(f"Error fetching the password list: {e}")
         words = []  
 
-
+#loops through input and checks each character
     for char in usr_input:
         length += 1
         if char.isupper():
@@ -38,7 +39,7 @@ def check_password():
             special_character += 1
         elif char.isdigit():
             number +=1
-
+#evaluates password
     print("\nPassword analysis: ")
     print("- Length:",length,"characters")
     print("- Uppercase letters:", upper_char)
@@ -54,6 +55,7 @@ def check_password():
     if special_character < min_special:
         print("This password needs more special characters. It needs at least", min_special, "special characters.")
 
+#determines strength of password
     if usr_input in words:
         print("\nThis is a very common password. Please try something else.")
     elif (length >= min_length and
@@ -73,7 +75,7 @@ def check_password():
     else:
         print("\nThis is a weak password. Try again after looking at the password analysis. ")
 
-
+#function for adding password to list 
 def add_password():
     password_to_add = input('\nEnter password you want to add to database. ')
     if password_to_add not in password_list:
@@ -83,7 +85,7 @@ def add_password():
     else:
         print('\nPassword already in list. ')
 
-
+#function to remove password from list 
 def remove_password():
     password_to_remove = input("\nWhich password do you want to remove? ")
     if password_to_remove in password_list:
@@ -93,9 +95,11 @@ def remove_password():
     else:
         print('Password not found. Please try again. ')
 
+#function to show all passwords in the list
 def show_passwords():
     print("\n",password_list)
 
+#function to run program
 def main():
     while True:
         print("""

@@ -16,6 +16,6 @@
 ## Sprint 3
 - [x] Organize code 
 - [x] Create functions for program to have a database of passwords
-- [ ] Create PowerPoint slide to present 
+- [x] Create PowerPoint slide to present 
 - [x] Have basic program running
 - [x] Complete program
