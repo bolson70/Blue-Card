@@ -1,8 +1,13 @@
 
 password_list = []
 
+min_length = 12
+min_upper = 3
+min_number = 2
+min_special = 2
+
 def check_password():
-    usr_input = input("\nPlease enter a password to test strength: ")
+    usr_input = input("\nMake sure to not use something predictable like a birthday or name. Also, you shouldn't reuse passwords between accounts.\nPlease enter a password to test strength: ")
     special_characters = "~`!@#$%^&*()_-+={[}]|:;'<,>.?/"
     length = 0
     upper_char = 0
@@ -12,6 +17,7 @@ def check_password():
 
     with open('/users/jacobwhite/downloads/10-million-password-list-top-1000000.txt', 'r') as f:
         words = f.read().splitlines()
+
 
     for char in usr_input:
         length += 1
@@ -24,34 +30,42 @@ def check_password():
         elif char.isdigit():
             number +=1
 
-    pct_upper = round(float((upper_char/length)*100), 2)
-    pct_special = round(float((special_character/length)*100), 2)
-    pct_number = round(float((number/length)*100), 2)
+    print("\nPassword analysis: ")
+    print("- Length:",length,"characters")
+    print("- Uppercase letters:", upper_char)
+    print("- Numbers:", number)
+    print("- Special Characters:", special_character,"\n")
 
-    if usr_input not in words:
-        while length > 12:
-            if pct_upper > 20:
-                print("\nGood amount of capital letters")
-                if pct_number > 10:
-                    print("\nGood amount of numbers")
-                    if pct_special > 10:
-                        print("\nGood amount of special characters")
-                    else:
-                        print("\nYou should try again with more special characters")
-                else:
-                    print("\nYou should try again with more numbers")
-            else:
-                print("\nYou should try again with more uppercase characters")
-            break
+    if length < min_length:
+        print("This password is not long enough. It needs at least",min_length,"characters.")
+    if upper_char < min_upper:
+        print("This password needs more uppercase characters. It needs at least", min_upper,"uppercase characters.")
+    if number < min_number:
+        print("This password needs more numbers. It needs at least", min_number,"numbers.")
+    if special_character < min_special:
+        print("This password needs more special characters. It needs at least", min_special, "special characters.")
+
+    if usr_input in words:
+        print("\nThis is a very common password. Please try something else.")
+    elif (length >= min_length and
+        upper_char >= min_upper and
+        number >= min_number and
+        special_character >= min_special):
+        print("\nThis is a strong password!")
+    elif not (length >= min_length and
+        upper_char >= min_upper and
+        number >= min_number and
+        special_character >= min_special) and (
+        length >= min_length or
+        upper_char >= min_upper or
+        number >= min_number or
+        special_character >= min_special):
+        print("\nThis is a moderately strong password. Check the analysis above and change according to that.")
     else:
-        print("\nThis is a common password, try again with something different")
-                    
-
-    print("\nMake sure you did not use something predictable like a birthday or name. Also, you shouldn't reuse passwords.")
+        print("\nThis is a weak password. Try again after looking at the password analysis. ")
 
 
 def add_password():
-
     password_to_add = input('\nEnter password you want to add to database. ')
     if password_to_add not in password_list:
         print('Adding '+password_to_add)
