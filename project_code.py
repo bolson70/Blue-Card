@@ -1,4 +1,6 @@
 
+import requests 
+
 password_list = []
 
 min_length = 12
@@ -15,8 +17,15 @@ def check_password():
     special_character = 0
     number = 0
 
-    with open('/users/jacobwhite/downloads/10-million-password-list-top-1000000.txt', 'r') as f:
-        words = f.read().splitlines()
+    GITHUB_RAW_URL = 'https://raw.githubusercontent.com/ksu-is/password-strength-checker/refs/heads/main/10-million-password-list-top-1000000.txt'
+
+    try:
+        response = requests.get(GITHUB_RAW_URL)
+        response.raise_for_status()  
+        words = response.text.splitlines()  
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching the password list: {e}")
+        words = []  
 
 
     for char in usr_input:
