@@ -7,3 +7,6 @@
 - [x] Update projectroadmap.md file
 - [x] Obtain photos of fire scenes
 - [x] Start working on code for program
+## Sprint 2
+- [x] Continue working on code
+- [x] Commit beginning code
