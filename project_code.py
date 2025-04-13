@@ -15,6 +15,7 @@ size_up_prompts = [
     "Evaluate exposures and surrounding risks.",
     "Determine firefighting strategy (Offensive/Defensive).",
     "List the additional resources needed."
+    "Do a full size-up."
 ]
 
 def get_random_building():
