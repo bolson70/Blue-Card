@@ -10,3 +10,4 @@
 ## Sprint 2
 - [x] Continue working on code
 - [x] Commit beginning code
+- [x] Import additional photos of fire scenes. 
