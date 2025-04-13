@@ -21,7 +21,7 @@ def get_random_building():
     """Fetches a random building image from the static/buildings folder."""
     if not os.path.exists(BUILDING_FOLDER):
         return None
-    buildings = [f for f in os.listdir(BUILDING_FOLDER) if f.endswith(('.jpg', '.png', '.jpeg'))]
+    buildings = [f for f in os.listdir(BUILDING_FOLDER) if f.endswith(('.jpg', '.png'))]
     return random.choice(buildings) if buildings else None
 
 @app.route("/", methods=["GET", "POST"])
