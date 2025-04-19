@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firefighter Size-Up Training</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        img { max-width: 90%; height: auto; border: 2px solid black; }
+        .container { width: 60%; margin: auto; padding: 20px; border: 2px solid #333; border-radius: 10px; }
+        textarea { width: 100%; height: 100px; }
+    </style>
+</head>
+<body>
+    <h1>🔥 Firefighter Size-Up Practice 🔥</h1>
+    <div class="container">
+        <h2>Size-Up Challenge</h2>
+        <p><strong>{{ prompt }}</strong></p>
+        
+        {% if building_image %}
+            <img src="{{ url_for('static', filename='buildings/' + building_image) }}" alt="Random Building">
+        {% else %}
+            <p style="color:red;">No buildings available. Add images to the static/buildings/ folder.</p>
+        {% endif %}
+
+        <form method="post">
+            <textarea name="size_up" placeholder="Enter your size-up response here..."></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        {% if feedback %}
+            <p><strong>{{ feedback }}</strong></p>
+        {% endif %}
+    </div>
+</body>
+</html>
