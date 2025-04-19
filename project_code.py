@@ -5,7 +5,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 # Path to the building images
-BUILDING_FOLDER = "static/buildings"
+BUILDING_FOLDER = os.path.join(os.path.dirname(__file__), "static", "buildings")
 
 # Firefighter size-up categories
 size_up_prompts = [
@@ -19,12 +19,20 @@ size_up_prompts = [
 ]
 
 def get_random_building():
-    """Fetches a random building image from the static/buildings folder."""
     if not os.path.exists(BUILDING_FOLDER):
+        print("static/buildings folder not found!")
         return None
-    buildings = [f for f in os.listdir(BUILDING_FOLDER) if f.endswith(('.jpg', '.png'))]
-    return random.choice(buildings) if buildings else None
 
+    buildings = [f for f in os.listdir(BUILDING_FOLDER) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+    print("Found buildings:", buildings)
+
+    if buildings:
+        selected = random.choice(buildings)
+        print("Selected image:", selected)
+        return selected
+    else:
+        print("No image files found in static/buildings/")
+        return None
 @app.route("/", methods=["GET", "POST"])
 def size_up():
     """Handles the display of a random building and user input for size-up practice."""
