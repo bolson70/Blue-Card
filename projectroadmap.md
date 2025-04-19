@@ -10,4 +10,10 @@
 ## Sprint 2
 - [x] Continue working on code
 - [x] Commit beginning code
-- [x] Import additional photos of fire scenes. 
+- [x] Import additional photos of fire scenes
+## Sprint 3
+- [x] Organize code
+- [x] Create Powerpoint slide
+- [x] Add static/buildings to code
+- [x] Add size-up.html to code
+- [x] Complete program
